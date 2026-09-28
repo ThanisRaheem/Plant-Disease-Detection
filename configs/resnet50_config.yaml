@@ -1,0 +1,15 @@
+# Set data_dir to the local dataset; use the shared CSV manifest when available.
+data_dir: /Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage
+manifest: null
+classes: null
+seed: 4050
+image_size: [224, 224]
+batch_size: 32
+validation_split: 0.15
+test_split: 0.15
+weights: imagenet
+freeze_backbone: true
+learning_rate: 0.0001
+epochs: 20
+patience: 4
+output_dir: results/resnet50
