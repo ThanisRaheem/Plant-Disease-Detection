@@ -13,23 +13,3 @@ venv/
 *.h5
 *.keras
 results/resnet50/*.keras
-# Dataset
-PlantVillage/
-PlantVillage.zip
-
-# Python
-__pycache__/
-*.pyc
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Virtual Environment
-.venv/
-env/
-
-# Generated models and local files
-models/
-*.h5
-*.keras
-.DS_Store
