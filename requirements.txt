@@ -1,9 +1,11 @@
-tensorflow
+tensorflow==2.21.0
 numpy
 pandas
-scikit-learn
 matplotlib
+scikit-learn
 seaborn
+opencv-python
 pillow
+scipy
 jupyter
 ipykernel
