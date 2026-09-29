@@ -13,4 +13,7 @@ freeze_backbone: true
 learning_rate: 0.0001
 epochs: 20
 patience: 4
+unfreeze_from: conv5_block1
+fine_tune_learning_rate: 0.00001
+fine_tune_epochs: 5
 output_dir: results/resnet50

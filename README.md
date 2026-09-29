@@ -67,5 +67,22 @@ normalization. Validation and test data use only resize and RGB conversion;
 they contain no random augmentation, so model selection and final evaluation
 remain deterministic and comparable across architectures.
 
+## ResNet50 transfer learning stages
+
+The classifier head is created with one softmax output per selected class; no
+class count is hardcoded. Training has two stages:
+
+1. **Feature extraction:** ImageNet-pretrained ResNet50 layers are frozen and
+   only the new global-average-pooling/dropout/softmax head is optimized.
+2. **Fine-tuning:** the later `conv5_block1` and subsequent ResNet50 layers are
+   unfrozen while earlier blocks remain frozen. This adapts high-level visual
+   features to plant disease while preserving general ImageNet features. The
+   second stage uses the smaller `fine_tune_learning_rate` from the config.
+
+Both stages select checkpoints using validation data only. The test set remains
+reserved for the separate final evaluation command. The implementation uses
+ sparse categorical cross-entropy, equivalent to multiclass cross-entropy for
+integer class labels.
+
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.
