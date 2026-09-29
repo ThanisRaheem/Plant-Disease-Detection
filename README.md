@@ -55,5 +55,17 @@ using a fixed seed, without copying image files. A manifest must contain
 `path,label,split`; the loader uses those assignments exactly and never
 reshuffles them. The test rows are only used by the evaluation command.
 
+## ResNet50 preprocessing
+
+Images are resized to **224×224 RGB**. The model applies Keras
+`ResNet50.preprocess_input`, which converts RGB pixels to the channel convention
+and ImageNet training scale expected by the pretrained backbone. During
+training only, the configured augmentation pipeline applies a horizontal flip,
+small rotation (±9°), modest zoom (10%), small translation (5%), and conservative
+contrast variation (10%). These transformations are applied before ImageNet
+normalization. Validation and test data use only resize and RGB conversion;
+they contain no random augmentation, so model selection and final evaluation
+remain deterministic and comparable across architectures.
+
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.

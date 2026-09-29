@@ -6,7 +6,7 @@ def main(path):
     with open(path) as f: c=yaml.safe_load(f)
     set_seed(c['seed']); r=load_records(c['data_dir'],c.get('manifest'),c.get('classes'))
     tr,va,_,labels=make_datasets(r,c['seed'],tuple(c['image_size']),c['batch_size'],c['validation_split'],c['test_split'])
-    m=build_resnet50(len(labels),tuple(c['image_size']),c.get('weights','imagenet'),c.get('freeze_backbone',True)); m.compile(optimizer=tf.keras.optimizers.Adam(c['learning_rate']),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
+    m=build_resnet50(len(labels),tuple(c['image_size']),c.get('weights','imagenet'),c.get('freeze_backbone',True),c.get('augmentation',True)); m.compile(optimizer=tf.keras.optimizers.Adam(c['learning_rate']),loss='sparse_categorical_crossentropy',metrics=['accuracy'])
     os.makedirs(c['output_dir'],exist_ok=True); cb=[tf.keras.callbacks.ModelCheckpoint(os.path.join(c['output_dir'],'best.keras'),monitor='val_accuracy',save_best_only=True),tf.keras.callbacks.EarlyStopping(monitor='val_loss',patience=c['patience'],restore_best_weights=True)]
     h=m.fit(tr,validation_data=va,epochs=c['epochs'],callbacks=cb)
     json.dump(labels,open(os.path.join(c['output_dir'],'labels.json'),'w'),indent=2); json.dump(h.history,open(os.path.join(c['output_dir'],'history.json'),'w'),indent=2)
