@@ -1,8 +1,20 @@
-.venv/
-__pycache__/
-.ipynb_checkpoints/
-.DS_Store
+# Dataset
 PlantVillage/
+PlantVillage.zip
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual Environment
+.venv/
+env/
+
+# Generated models and local files
+models/
 *.h5
 *.keras
-PlantVillage.zip
+.DS_Store

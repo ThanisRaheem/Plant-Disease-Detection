@@ -1,18 +1,22 @@
 # Plant Disease Detection
 
 ## Overview
-This project uses deep learning techniques to detect plant diseases from leaf images.
+
+This project uses deep learning techniques to classify plant leaf images and detect diseases.
 
 ## Features
+
 - Image-based disease classification
-- Deep learning model implementation
-- Automated plant disease detection
+- VGG16 transfer learning and fine-tuning
+- A from-scratch Custom CNN implementation
+- Dataset exploration and preprocessing notebooks
 
 ## Technologies Used
+
 - Python
 - TensorFlow / Keras
 - OpenCV
-- CNN
+- NumPy, pandas, scikit-learn, and Matplotlib
 
 ## Installation
 
@@ -30,7 +34,14 @@ If it is not listed, run **Python: Select Interpreter** from the Command
 Palette and enter that interpreter path, then select it as the notebook kernel.
 Restart the notebook kernel before running the cells.
 
-Use the project environment instead of Anaconda's `base` environment.
-The original base environment crashed during `import tensorflow`; the macOS
-crash report showed a native Protobuf segmentation fault involving
+Use the project environment instead of Anaconda's `base` environment. The
+original base environment crashed during `import tensorflow`; the macOS crash
+report showed a native Protobuf segmentation fault involving
 `libtensorflow_framework.2.dylib` and Anaconda's `libprotobuf.29.3.0.dylib`.
+
+## Notebooks
+
+The reproducible notebooks in `notebooks/` cover dataset EDA, stratified
+data preprocessing, and a from-scratch Custom CNN. Runtime artifacts are
+written below `results/custom_cnn/`; the source dataset and trained models are
+ignored by Git.

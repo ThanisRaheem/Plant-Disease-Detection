@@ -1,6 +1,11 @@
 tensorflow==2.21.0
 numpy
+pandas
 matplotlib
+scikit-learn
+seaborn
+opencv-python
 pillow
 scipy
+jupyter
 ipykernel
