@@ -1,21 +1,31 @@
 # 🌿 Plant Disease Detection Using Deep Learning
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Deep%20Learning-CNN-blue" />
-  <img src="https://img.shields.io/badge/Framework-TensorFlow-orange" />
-  <img src="https://img.shields.io/badge/Model-VGG16%20%7C%20ResNet50-green" />
-  <img src="https://img.shields.io/badge/Dataset-PlantVillage-success" />
+<img src="https://img.shields.io/badge/AI-Deep%20Learning-blue">
+<img src="https://img.shields.io/badge/Framework-TensorFlow-orange">
+<img src="https://img.shields.io/badge/Models-CNN%20%7C%20VGG16%20%7C%20ResNet50%20%7C%20EfficientNetB0-green">
+<img src="https://img.shields.io/badge/Dataset-PlantVillage-success">
 </p>
 
----
 
 # 📌 Project Overview
 
-Agriculture plays a vital role in global food production. However, plant diseases significantly reduce crop productivity and quality. Traditional disease identification methods require expert knowledge and manual inspection, which can be time-consuming and expensive.
+Agriculture is one of the most important sectors that supports global food production. Plant diseases significantly affect crop productivity and create economic losses for farmers.
 
-This project develops an **Artificial Intelligence-based Plant Disease Detection System** using **Deep Learning and Transfer Learning techniques** to automatically identify plant diseases from leaf images.
+Traditional plant disease identification requires manual observation by agricultural experts, which can be time-consuming and difficult to perform on a large scale.
 
-The system uses advanced Convolutional Neural Network (CNN) architectures to extract visual features from plant leaves and classify them into different disease categories.
+This project develops an **Artificial Intelligence-based Plant Disease Detection System** using **Deep Learning and Transfer Learning techniques** to automatically identify diseases from plant leaf images.
+
+The system applies multiple Convolutional Neural Network (CNN) architectures and compares their performance for accurate plant disease classification.
+
+
+The implemented models include:
+
+- Custom CNN
+- VGG16
+- ResNet50
+- EfficientNetB0
+
 
 ---
 
@@ -23,100 +33,282 @@ The system uses advanced Convolutional Neural Network (CNN) architectures to ext
 
 The main objectives of this component are:
 
-- Develop an automated plant disease classification system using Deep Learning.
-- Apply Transfer Learning techniques for efficient feature extraction.
-- Train CNN models using large-scale plant leaf image datasets.
-- Compare different deep learning architectures.
-- Evaluate model performance using standard evaluation metrics.
-- Support early detection of plant diseases.
+- Develop an AI-based plant disease classification system.
+- Perform image preprocessing and augmentation.
+- Implement multiple deep learning architectures.
+- Apply transfer learning using pretrained CNN models.
+- Compare model performance using evaluation metrics.
+- Identify the most effective model for plant disease detection.
+
 
 ---
 
 # 🏗️ System Workflow
 
+
 ```
-                 Plant Leaf Image
-                        |
-                        ↓
-              Image Preprocessing
-                        |
-                        ↓
-              Image Augmentation
-                        |
-                        ↓
-          Pre-trained CNN Architecture
-              (VGG16 / ResNet50)
-                        |
-                        ↓
+                Plant Leaf Image
+                       |
+                       ↓
+             Image Preprocessing
+                       |
+                       ↓
+              Data Augmentation
+                       |
+                       ↓
+
+        ---------------------------------
+        |        |          |           |
+        ↓        ↓          ↓           ↓
+
+      CNN     VGG16    ResNet50   EfficientNetB0
+
+        |        |          |           |
+        ---------------------------------
+
+                       |
+                       ↓
+
              Feature Extraction
-                        |
-                        ↓
+
+                       |
+                       ↓
+
               Classification Layer
-                        |
-                        ↓
-             Disease Prediction
-                        |
-                        ↓
-          Predicted Disease Category
+
+                       |
+                       ↓
+
+          Plant Disease Prediction
+
 ```
+
 
 ---
 
 # 🧠 Deep Learning Methodology
 
-## Transfer Learning
 
-Transfer Learning is used to improve model performance by using knowledge learned from previously trained neural networks.
+This research investigates different CNN-based architectures for plant disease classification.
 
-The pretrained models used in this project are:
+The models are divided into:
+
+
+## 1. Custom Deep Learning Model
+
+A CNN architecture is created from scratch to establish a baseline performance.
+
+
+## 2. Transfer Learning Models
+
+Pretrained models are adapted from ImageNet and fine-tuned for plant disease classification.
+
+
+Implemented transfer learning models:
 
 - VGG16
 - ResNet50
-
-
-These models are pretrained on the ImageNet dataset and adapted for plant disease classification.
-
----
-
-# 🔬 Implemented Models
-
-## 1. VGG16
-
-VGG16 is a deep convolutional neural network consisting of 16 layers.
-
-### Advantages:
-
-- Simple architecture
-- Effective feature extraction
-- Suitable for image classification tasks
+- EfficientNetB0
 
 
 ---
 
-## 2. ResNet50
+# 🔬 Implemented Deep Learning Models
 
-ResNet50 is a residual neural network that introduces skip connections.
 
-### Advantages:
+# 1. Custom CNN Model
 
-- Solves vanishing gradient problems
-- Enables deeper network training
-- Provides powerful feature extraction capability
+
+## Overview
+
+A custom Convolutional Neural Network is developed as a baseline model.
+
+The network learns important visual patterns from plant leaf images including:
+
+- Edges
+- Shapes
+- Textures
+- Disease patterns
+
+
+## Architecture Components
+
+```
+Input Image
+
+↓
+
+Convolution Layer
+
+↓
+
+Activation Function
+
+↓
+
+Pooling Layer
+
+↓
+
+Convolution Layer
+
+↓
+
+Dropout
+
+↓
+
+Fully Connected Layer
+
+↓
+
+Softmax Output
+
+```
+
+
+## Purpose
+
+- Establish baseline classification performance.
+- Understand CNN feature learning.
+- Compare against advanced architectures.
+
+
+---
+
+
+# 2. VGG16 Transfer Learning Model
+
+
+## Overview
+
+VGG16 is a deep convolutional neural network developed by the Visual Geometry Group.
+
+
+## Architecture
+
+VGG16 contains:
+
+- 13 Convolution Layers
+- 5 Max Pooling Layers
+- Fully Connected Layers
+
+
+## Implementation
+
+The pretrained ImageNet model is adapted by:
+
+- Removing original classifier layers.
+- Adding custom classification layers.
+- Training on plant disease images.
+
+
+## Advantages
+
+- Simple architecture.
+- Strong feature extraction ability.
+- Widely used in image classification.
+
+
+---
+
+
+# 3. ResNet50 Transfer Learning Model
+
+
+## Overview
+
+ResNet50 is a residual neural network architecture designed to train deeper networks efficiently.
+
+
+## Key Feature
+
+Residual connections allow information to skip layers:
+
+```
+Input
+
+↓
+
+Convolution Layers
+
+↓
+
++
+
+↓
+
+Output
+
+```
+
+
+## Advantages
+
+- Reduces vanishing gradient problems.
+- Learns complex image features.
+- Supports deeper architectures.
+
+
+## Implementation
+
+The model uses:
+
+- ImageNet pretrained weights.
+- Custom classification layer.
+- Fine-tuning strategy.
+
+
+---
+
+
+# 4. EfficientNetB0 Transfer Learning Model
+
+
+## Overview
+
+EfficientNetB0 is a modern CNN architecture that balances network depth, width, and image resolution using compound scaling.
+
+
+## Key Features
+
+- Efficient feature extraction.
+- Fewer parameters.
+- Better computational efficiency.
+
+
+## Advantages
+
+- High accuracy with lower computational cost.
+- Suitable for real-world AI applications.
+- Effective for image classification tasks.
+
+
+## Implementation
+
+The model uses:
+
+- ImageNet pretrained EfficientNetB0 backbone.
+- Custom output classification layer.
+- Plant disease dataset training.
 
 
 ---
 
 # 📂 Dataset Information
 
+
 ## PlantVillage Dataset
 
-The project uses the publicly available PlantVillage dataset.
 
-Dataset contains:
+This project uses the PlantVillage dataset containing thousands of plant leaf images.
 
-- Healthy plant images
-- Diseased plant images
-- Multiple crop categories
+
+Dataset includes:
+
+- Healthy plant images.
+- Diseased plant images.
+- Multiple crop categories.
 
 
 Example classes:
@@ -135,41 +327,52 @@ Potato___Late_blight
 Tomato___Bacterial_spot
 
 Tomato___Late_blight
+
 ```
+
 
 ---
 
 # 🔄 Image Preprocessing Pipeline
 
-Before training, images are processed using the following steps:
+
+Before model training, images are processed using:
+
 
 ## 1. Image Resizing
 
+
 All images are resized into:
+
 
 ```
 224 × 224 × 3
 ```
 
-This matches the input requirement of pretrained CNN models.
+
+to match pretrained CNN input requirements.
+
 
 ---
 
-## 2. Image Normalization
+## 2. Normalization
 
-Pixel values are normalized:
+
+Pixel values are scaled:
+
 
 ```
 Normalized Pixel = Pixel Value / 255
 ```
 
-This improves training stability.
 
 ---
 
 ## 3. Data Augmentation
 
-To increase dataset diversity and prevent overfitting:
+
+To improve model generalization:
+
 
 Applied techniques:
 
@@ -185,30 +388,35 @@ Applied techniques:
 
 # 📁 Project Structure
 
+
 ```
 Plant-Disease-Detection/
 
 │
 ├── dataset/
-│   └── PlantVillage Dataset
 │
 ├── preprocessing/
-│   └── image_preprocessing.py
 │
 ├── notebooks/
 │   │
-│   ├── VGG16_Training.ipynb
-│   └── ResNet50_Training.ipynb
+│   ├── CNN_training.ipynb
+│   ├── VGG16_training.ipynb
+│   ├── ResNet50_training.ipynb
+│   └── EfficientNetB0_training.ipynb
 │
 ├── models/
-│   ├── vgg16_model/
-│   └── resnet50_model/
+│   │
+│   ├── cnn/
+│   ├── vgg16/
+│   ├── resnet50/
+│   └── efficientnetb0/
 │
 ├── results/
 │   │
-│   ├── accuracy_graphs/
+│   ├── accuracy/
+│   ├── loss/
 │   ├── confusion_matrix/
-│   └── evaluation_reports/
+│   └── reports/
 │
 ├── requirements.txt
 │
@@ -216,15 +424,18 @@ Plant-Disease-Detection/
 
 ```
 
+
 ---
 
 # 🛠️ Technologies Used
+
 
 ## Programming Language
 
 ```
 Python 3.x
 ```
+
 
 ## Deep Learning Framework
 
@@ -233,56 +444,77 @@ TensorFlow
 Keras
 ```
 
+
+## Deep Learning Models
+
+```
+Custom CNN
+
+VGG16
+
+ResNet50
+
+EfficientNetB0
+```
+
+
 ## Image Processing
 
 ```
 OpenCV
+
 Pillow
 ```
 
-## Data Handling
+
+## Data Processing
 
 ```
 NumPy
+
 Pandas
 ```
+
 
 ## Visualization
 
 ```
 Matplotlib
+
 Seaborn
 ```
+
 
 ---
 
 # ⚙️ Installation Guide
 
-## Step 1: Clone Repository
+
+## Clone Repository
+
 
 ```bash
 git clone https://github.com/ThanisRaheem/Plant-Disease-Detection.git
 ```
 
----
 
-## Step 2: Navigate to Project Folder
+## Navigate Project Folder
+
 
 ```bash
 cd Plant-Disease-Detection
 ```
 
----
 
-## Step 3: Create Virtual Environment
+## Create Virtual Environment
+
 
 ```bash
 python -m venv .venv
 ```
 
----
 
-## Step 4: Activate Virtual Environment
+## Activate Environment
 
 
 ### Windows
@@ -298,21 +530,30 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
----
 
-## Step 5: Install Required Libraries
+## Install Dependencies
+
 
 ```bash
 pip install -r requirements.txt
 ```
 
+
 ---
 
 # 🚀 Model Training
 
+
+## Custom CNN Training
+
+
+```bash
+python train_cnn.py
+```
+
+
 ## VGG16 Training
 
-Run:
 
 ```bash
 python train_vgg16.py
@@ -321,124 +562,148 @@ python train_vgg16.py
 
 ## ResNet50 Training
 
-Run:
 
 ```bash
 python train_resnet50.py
 ```
 
+
+## EfficientNetB0 Training
+
+
+```bash
+python train_efficientnetb0.py
+```
+
+
 ---
 
 # 📊 Model Evaluation
 
+
 The trained models are evaluated using:
+
 
 ## Accuracy
 
-Measures the overall prediction correctness.
+Measures overall classification performance.
 
----
 
 ## Precision
 
-Measures correctly identified disease samples.
+Measures correctness of positive predictions.
 
----
 
 ## Recall
 
-Measures the ability to detect disease cases.
+Measures disease detection capability.
 
----
 
-## F1 Score
+## F1-score
 
-Balances precision and recall.
+Provides balance between precision and recall.
 
----
 
 ## Confusion Matrix
 
-Provides class-level prediction analysis.
+Shows class-level prediction performance.
+
+
+## Training Curves
+
+Used to analyze:
+
+- Accuracy improvement
+- Loss reduction
+- Overfitting behaviour
+
 
 ---
 
-# 📈 Model Output
+# 📈 System Output
+
 
 The system provides:
 
-✅ Predicted disease class  
-✅ Confidence score  
-✅ Training accuracy graph  
-✅ Validation accuracy graph  
+
+✅ Predicted disease category  
+✅ Model confidence score  
+✅ Training results  
+✅ Validation performance  
 ✅ Confusion matrix  
 ✅ Classification report  
 
 
 Example:
 
+
 ```
 Input:
+
 Tomato Leaf Image
 
 
 Prediction:
+
 Tomato___Late_blight
 
 
 Confidence:
+
 95.6%
 
 ```
+
 
 ---
 
 # 👥 Team Contribution
 
-## Component Name
+
+## Component
 
 **Plant Disease Detection Using Deep Learning**
 
 
-## Responsibilities
+Responsibilities:
+
 
 - Dataset preparation
 - Image preprocessing
-- Data augmentation
-- Deep learning model development
+- CNN implementation
 - Transfer learning implementation
-- Model evaluation
-- Performance analysis
+- Model training
+- Model comparison
+- Performance evaluation
 
 
 ---
 
 # 🔮 Future Enhancements
 
+
 Future improvements include:
 
-- Real-time plant disease detection using mobile applications.
-- Explainable AI integration using Grad-CAM.
-- Disease severity estimation.
-- Farmer recommendation system.
-- Cloud-based AI deployment.
-- IoT-based smart agriculture integration.
 
+- Explainable AI using Grad-CAM.
+- Mobile application integration.
+- Real-time camera-based disease detection.
+- Disease severity prediction.
+- Smart agriculture recommendation system.
+- Cloud deployment.
 
----
-
-# 📜 Research Contribution
-
-This component contributes towards developing an intelligent agricultural support system by applying Deep Learning methods for automatic plant disease recognition.
 
 ---
 
 # 🙏 Acknowledgement
 
-We would like to thank our supervisors, lecturers, and team members for their continuous guidance and support throughout this research project.
+
+We would like to thank our supervisors, lecturers, and team members for their valuable guidance and continuous support throughout this research project.
+
 
 ---
 
-# 📄 License
+# 📜 License
+
 
 This project is developed for academic and research purposes.
