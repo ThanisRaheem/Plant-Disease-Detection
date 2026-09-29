@@ -1,257 +1,709 @@
-# Plant Disease Classification using EfficientNetB0
+# 🌿 Plant Disease Detection Using Deep Learning
 
-## SE4050 – Group Assignment
+<p align="center">
+<img src="https://img.shields.io/badge/AI-Deep%20Learning-blue">
+<img src="https://img.shields.io/badge/Framework-TensorFlow-orange">
+<img src="https://img.shields.io/badge/Models-CNN%20%7C%20VGG16%20%7C%20ResNet50%20%7C%20EfficientNetB0-green">
+<img src="https://img.shields.io/badge/Dataset-PlantVillage-success">
+</p>
 
-This repository contains the EfficientNetB0 implementation for multi-class plant disease classification using the PlantVillage dataset. The model is developed using transfer learning followed by fine-tuning.
 
-## Dataset
+# 📌 Project Overview
 
-**Source:** https://www.kaggle.com/datasets/emmarex/plantdisease
+Agriculture is one of the most important sectors that supports global food production. Plant diseases significantly affect crop productivity and create economic losses for farmers.
 
-The experiment uses 15 classes.
+Traditional plant disease identification requires manual observation by agricultural experts, which can be time-consuming and difficult to perform on a large scale.
 
-| Split | Images |
-|---|---:|
-| Training | 14,446 |
-| Validation | 3,096 |
-| Test | 3,096 |
-| **Total** | **20,638** |
+This project develops an **Artificial Intelligence-based Plant Disease Detection System** using **Deep Learning and Transfer Learning techniques** to automatically identify diseases from plant leaf images.
 
-Input image size: **224 × 224 pixels**
+The system applies multiple Convolutional Neural Network (CNN) architectures and compares their performance for accurate plant disease classification.
 
-## Model
 
-A pretrained **EfficientNetB0** backbone is used with a classification head for the 15 PlantVillage classes.
+The implemented models include:
 
-```text
-Input Image (224 × 224 × 3)
-        ↓
-Pretrained EfficientNetB0
-        ↓
-Feature Extraction
-        ↓
-Global Average Pooling
-        ↓
-Dropout
-        ↓
-Dense Layer
-        ↓
-15-Class Softmax Output
-```
-
-## Training Approach
-
-### 1. Frozen Baseline
-
-The pretrained EfficientNetB0 backbone is initially frozen. The newly added classification head is trained.
-
-| Metric | Frozen Baseline |
-|---|---:|
-| Best Validation Accuracy | **94.28%** |
-| Best Validation Loss | **0.1811** |
-
-### 2. Fine-Tuning
-
-Selected deeper EfficientNetB0 layers are unfrozen and trained together with the classification head using a lower learning rate. This allows the pretrained features to adapt to the plant disease classification task.
-
-## Baseline vs Fine-Tuned
-
-| Metric | Frozen Baseline | Fine-Tuned |
-|---|---:|---:|
-| Best Validation Accuracy | 94.28% | **97.45%** |
-| Best Validation Loss | 0.1811 | **0.0745** |
-
-Validation accuracy gain:
-
-**97.45% − 94.28% = 3.17 percentage points**
-
-Validation loss reduction:
-
-**0.1811 − 0.0745 = 0.1066**
-
-## Final Test Results
-
-The final fine-tuned model was evaluated on the held-out test set of 3,096 images.
-
-| Metric | Result |
-|---|---:|
-| Test Accuracy | **97.48%** |
-| Macro Precision | **97.78%** |
-| Macro Recall | **97.11%** |
-| Macro F1-Score | **97.34%** |
-| Test Loss | **0.0818** |
-
-Classification errors:
-
-- Total test images: **3,096**
-- Incorrect predictions: **78**
-- Error rate: **2.52%**
-
-## Model Complexity
-
-| Parameter Type | Number |
-|---|---:|
-| Trainable Parameters | **3,073,835** |
-| Non-Trainable Parameters | **994,979** |
-| **Total Parameters** | **4,068,814** |
-
-## Inference Performance
-
-| Metric | Result |
-|---|---:|
-| Batch Size | 8 |
-| Time per Image | **0.01225 seconds** |
-| Images per Second | **81.62** |
-
-## Training Time
-
-| Stage | Time |
-|---|---:|
-| Frozen Training | **17.93 minutes** |
-| Fine-Tuning | **14.88 minutes** |
-| Total | **≈32.81 minutes** |
-
-## Experimental Workflow
-
-```text
-PlantVillage Dataset
-        ↓
-Data Preparation
-        ↓
-Train / Validation / Test Split
-        ↓
-Resize Images to 224 × 224
-        ↓
-Pretrained EfficientNetB0
-        ↓
-Add Classification Head
-        ↓
-Frozen Baseline Training
-        ↓
-Baseline Validation Evaluation
-        ↓
-Unfreeze Selected Layers
-        ↓
-Fine-Tuning with Lower Learning Rate
-        ↓
-Fine-Tuned Validation Evaluation
-        ↓
-Final Test Evaluation
-        ↓
-Metrics + Confusion Matrix + Inference Analysis
-```
-
-## Repository Structure
-
-```text
-SE4050_PlantDisease_EfficientNetB0/
-│
-├── README.md
-├── notebooks/
-│   └── EfficientNetB0_PlantDisease.ipynb
-├── results/
-│   ├── efficientnetb0_final_results.json
-│   ├── confusion_matrix/
-│   ├── training_curves/
-│   └── evaluation_results/
-├── models/
-├── figures/
-   ├── baseline_vs_finetuned_confusion_matrix.png
-   ├── frozen_training_accuracy.png
-   ├── frozen_training_loss.png
-   ├── finetuning_accuracy.png
-   └── finetuning_loss.png
-```
-
-The exact contents may change depending on the final repository organization.
-
-## Technologies
-
-- Python
-- TensorFlow / Keras
+- Custom CNN
+- VGG16
+- ResNet50
 - EfficientNetB0
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- Google Colab
-- Git / GitHub
 
-## Evaluation
-
-The experiment reports:
-
-- Accuracy
-- Precision
-- Recall
-- Macro F1-score
-- Test loss
-- Confusion matrix
-- Model parameter count
-- Training time
-- Inference time
-- Images per second
-
-Macro F1 calculates the F1-score independently for each class and then averages the class scores.
-
-## Reproducibility
-
-The experiment was developed using Google Colab with a GPU-enabled runtime.
-
-The notebook includes:
-
-1. Dataset loading
-2. Dataset preparation
-3. Image preprocessing
-4. Model construction
-5. Frozen training
-6. Fine-tuning
-7. Validation evaluation
-8. Test evaluation
-9. Confusion matrix generation
-10. Performance analysis
-11. Result saving
-
-## Results Summary
-
-| Category | Result |
-|---|---:|
-| Dataset | PlantVillage |
-| Classes | 15 |
-| Input Size | 224 × 224 |
-| Training Images | 14,446 |
-| Validation Images | 3,096 |
-| Test Images | 3,096 |
-| Frozen Validation Accuracy | 94.28% |
-| Fine-Tuned Validation Accuracy | **97.45%** |
-| Validation Accuracy Gain | **3.17 pp** |
-| Final Test Accuracy | **97.48%** |
-| Macro Precision | **97.78%** |
-| Macro Recall | **97.11%** |
-| Macro F1 | **97.34%** |
-| Total Parameters | **4,068,814** |
-| Inference Time/Image | **0.01225 sec** |
-| Images/Second | **81.62** |
-
-## Conclusion
-
-The EfficientNetB0 experiment demonstrates a transfer-learning workflow for multi-class plant disease classification. A frozen baseline was first established, followed by fine-tuning of selected pretrained layers.
-
-Validation accuracy increased from **94.28% to 97.45%**, while validation loss decreased from **0.1811 to 0.0745**.
-
-The final fine-tuned model achieved **97.48% test accuracy** and **97.34% macro F1-score** on the held-out PlantVillage test set.
-
-The experiment also includes confusion-matrix analysis, model complexity measurements, training time, and inference performance.
-
-## Team Project
-
-This EfficientNetB0 implementation is one component of the overall group assignment. Each group member implements and evaluates a selected deep learning architecture using the project dataset and common evaluation approach.
 
 ---
 
-**Model:** EfficientNetB0  
-**Task:** Plant Disease Classification  
-**Dataset:** PlantVillage  
-**Module:** SE4050  
-**Project Type:** Group Assignment
+# 🎯 Project Objectives
+
+The main objectives of this component are:
+
+- Develop an AI-based plant disease classification system.
+- Perform image preprocessing and augmentation.
+- Implement multiple deep learning architectures.
+- Apply transfer learning using pretrained CNN models.
+- Compare model performance using evaluation metrics.
+- Identify the most effective model for plant disease detection.
+
+
+---
+
+# 🏗️ System Workflow
+
+
+```
+                Plant Leaf Image
+                       |
+                       ↓
+             Image Preprocessing
+                       |
+                       ↓
+              Data Augmentation
+                       |
+                       ↓
+
+        ---------------------------------
+        |        |          |           |
+        ↓        ↓          ↓           ↓
+
+      CNN     VGG16    ResNet50   EfficientNetB0
+
+        |        |          |           |
+        ---------------------------------
+
+                       |
+                       ↓
+
+             Feature Extraction
+
+                       |
+                       ↓
+
+              Classification Layer
+
+                       |
+                       ↓
+
+          Plant Disease Prediction
+
+```
+
+
+---
+
+# 🧠 Deep Learning Methodology
+
+
+This research investigates different CNN-based architectures for plant disease classification.
+
+The models are divided into:
+
+
+## 1. Custom Deep Learning Model
+
+A CNN architecture is created from scratch to establish a baseline performance.
+
+
+## 2. Transfer Learning Models
+
+Pretrained models are adapted from ImageNet and fine-tuned for plant disease classification.
+
+
+Implemented transfer learning models:
+
+- VGG16
+- ResNet50
+- EfficientNetB0
+
+
+---
+
+# 🔬 Implemented Deep Learning Models
+
+
+# 1. Custom CNN Model
+
+
+## Overview
+
+A custom Convolutional Neural Network is developed as a baseline model.
+
+The network learns important visual patterns from plant leaf images including:
+
+- Edges
+- Shapes
+- Textures
+- Disease patterns
+
+
+## Architecture Components
+
+```
+Input Image
+
+↓
+
+Convolution Layer
+
+↓
+
+Activation Function
+
+↓
+
+Pooling Layer
+
+↓
+
+Convolution Layer
+
+↓
+
+Dropout
+
+↓
+
+Fully Connected Layer
+
+↓
+
+Softmax Output
+
+```
+
+
+## Purpose
+
+- Establish baseline classification performance.
+- Understand CNN feature learning.
+- Compare against advanced architectures.
+
+
+---
+
+
+# 2. VGG16 Transfer Learning Model
+
+
+## Overview
+
+VGG16 is a deep convolutional neural network developed by the Visual Geometry Group.
+
+
+## Architecture
+
+VGG16 contains:
+
+- 13 Convolution Layers
+- 5 Max Pooling Layers
+- Fully Connected Layers
+
+
+## Implementation
+
+The pretrained ImageNet model is adapted by:
+
+- Removing original classifier layers.
+- Adding custom classification layers.
+- Training on plant disease images.
+
+
+## Advantages
+
+- Simple architecture.
+- Strong feature extraction ability.
+- Widely used in image classification.
+
+
+---
+
+
+# 3. ResNet50 Transfer Learning Model
+
+
+## Overview
+
+ResNet50 is a residual neural network architecture designed to train deeper networks efficiently.
+
+
+## Key Feature
+
+Residual connections allow information to skip layers:
+
+```
+Input
+
+↓
+
+Convolution Layers
+
+↓
+
++
+
+↓
+
+Output
+
+```
+
+
+## Advantages
+
+- Reduces vanishing gradient problems.
+- Learns complex image features.
+- Supports deeper architectures.
+
+
+## Implementation
+
+The model uses:
+
+- ImageNet pretrained weights.
+- Custom classification layer.
+- Fine-tuning strategy.
+
+
+---
+
+
+# 4. EfficientNetB0 Transfer Learning Model
+
+
+## Overview
+
+EfficientNetB0 is a modern CNN architecture that balances network depth, width, and image resolution using compound scaling.
+
+
+## Key Features
+
+- Efficient feature extraction.
+- Fewer parameters.
+- Better computational efficiency.
+
+
+## Advantages
+
+- High accuracy with lower computational cost.
+- Suitable for real-world AI applications.
+- Effective for image classification tasks.
+
+
+## Implementation
+
+The model uses:
+
+- ImageNet pretrained EfficientNetB0 backbone.
+- Custom output classification layer.
+- Plant disease dataset training.
+
+
+---
+
+# 📂 Dataset Information
+
+
+## PlantVillage Dataset
+
+
+This project uses the PlantVillage dataset containing thousands of plant leaf images.
+
+
+Dataset includes:
+
+- Healthy plant images.
+- Diseased plant images.
+- Multiple crop categories.
+
+
+Example classes:
+
+```
+Apple___Apple_scab
+
+Apple___Black_rot
+
+Apple___Healthy
+
+Potato___Early_blight
+
+Potato___Late_blight
+
+Tomato___Bacterial_spot
+
+Tomato___Late_blight
+
+```
+
+
+---
+
+# 🔄 Image Preprocessing Pipeline
+
+
+Before model training, images are processed using:
+
+
+## 1. Image Resizing
+
+
+All images are resized into:
+
+
+```
+224 × 224 × 3
+```
+
+
+to match pretrained CNN input requirements.
+
+
+---
+
+## 2. Normalization
+
+
+Pixel values are scaled:
+
+
+```
+Normalized Pixel = Pixel Value / 255
+```
+
+
+---
+
+## 3. Data Augmentation
+
+
+To improve model generalization:
+
+
+Applied techniques:
+
+- Rotation
+- Horizontal Flip
+- Zoom
+- Brightness Adjustment
+- Width Shift
+- Height Shift
+
+
+---
+
+# 📁 Project Structure
+
+
+```
+Plant-Disease-Detection/
+
+│
+├── dataset/
+│
+├── preprocessing/
+│
+├── notebooks/
+│   │
+│   ├── CNN_training.ipynb
+│   ├── VGG16_training.ipynb
+│   ├── ResNet50_training.ipynb
+│   └── EfficientNetB0_training.ipynb
+│
+├── models/
+│   │
+│   ├── cnn/
+│   ├── vgg16/
+│   ├── resnet50/
+│   └── efficientnetb0/
+│
+├── results/
+│   │
+│   ├── accuracy/
+│   ├── loss/
+│   ├── confusion_matrix/
+│   └── reports/
+│
+├── requirements.txt
+│
+└── README.md
+
+```
+
+
+---
+
+# 🛠️ Technologies Used
+
+
+## Programming Language
+
+```
+Python 3.x
+```
+
+
+## Deep Learning Framework
+
+```
+TensorFlow
+Keras
+```
+
+
+## Deep Learning Models
+
+```
+Custom CNN
+
+VGG16
+
+ResNet50
+
+EfficientNetB0
+```
+
+
+## Image Processing
+
+```
+OpenCV
+
+Pillow
+```
+
+
+## Data Processing
+
+```
+NumPy
+
+Pandas
+```
+
+
+## Visualization
+
+```
+Matplotlib
+
+Seaborn
+```
+
+
+---
+
+# ⚙️ Installation Guide
+
+
+## Clone Repository
+
+
+```bash
+git clone https://github.com/ThanisRaheem/Plant-Disease-Detection.git
+```
+
+
+## Navigate Project Folder
+
+
+```bash
+cd Plant-Disease-Detection
+```
+
+
+## Create Virtual Environment
+
+
+```bash
+python -m venv .venv
+```
+
+
+## Activate Environment
+
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+
+### Mac/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+
+## Install Dependencies
+
+
+```bash
+pip install -r requirements.txt
+```
+
+
+---
+
+# 🚀 Model Training
+
+
+## Custom CNN Training
+
+
+```bash
+python train_cnn.py
+```
+
+
+## VGG16 Training
+
+
+```bash
+python train_vgg16.py
+```
+
+
+## ResNet50 Training
+
+
+```bash
+python train_resnet50.py
+```
+
+
+## EfficientNetB0 Training
+
+
+```bash
+python train_efficientnetb0.py
+```
+
+
+---
+
+# 📊 Model Evaluation
+
+
+The trained models are evaluated using:
+
+
+## Accuracy
+
+Measures overall classification performance.
+
+
+## Precision
+
+Measures correctness of positive predictions.
+
+
+## Recall
+
+Measures disease detection capability.
+
+
+## F1-score
+
+Provides balance between precision and recall.
+
+
+## Confusion Matrix
+
+Shows class-level prediction performance.
+
+
+## Training Curves
+
+Used to analyze:
+
+- Accuracy improvement
+- Loss reduction
+- Overfitting behaviour
+
+
+---
+
+# 📈 System Output
+
+
+The system provides:
+
+
+✅ Predicted disease category  
+✅ Model confidence score  
+✅ Training results  
+✅ Validation performance  
+✅ Confusion matrix  
+✅ Classification report  
+
+
+Example:
+
+
+```
+Input:
+
+Tomato Leaf Image
+
+
+Prediction:
+
+Tomato___Late_blight
+
+
+Confidence:
+
+95.6%
+
+```
+
+
+---
+
+# 👥 Team Contribution
+
+
+## Component
+
+**Plant Disease Detection Using Deep Learning**
+
+
+Responsibilities:
+
+
+- Dataset preparation
+- Image preprocessing
+- CNN implementation
+- Transfer learning implementation
+- Model training
+- Model comparison
+- Performance evaluation
+
+
+---
+
+# 🔮 Future Enhancements
+
+
+Future improvements include:
+
+
+- Explainable AI using Grad-CAM.
+- Mobile application integration.
+- Real-time camera-based disease detection.
+- Disease severity prediction.
+- Smart agriculture recommendation system.
+- Cloud deployment.
+
+
+---
+
+# 🙏 Acknowledgement
+
+
+We would like to thank our supervisors, lecturers, and team members for their valuable guidance and continuous support throughout this research project.
+
+
+---
+
+# 📜 License
+
+
+This project is developed for academic and research purposes.

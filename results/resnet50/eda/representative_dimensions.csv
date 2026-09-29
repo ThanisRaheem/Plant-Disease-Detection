@@ -1,0 +1,16 @@
+class,path,width,height,channels,mode
+Pepper__bell___Bacterial_spot,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Pepper__bell___Bacterial_spot/785a6edb-1d68-4fce-aa9f-2c8dbed92044___NREC_B.Spot 1822.JPG,256,256,3,RGB
+Pepper__bell___healthy,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Pepper__bell___healthy/b12059e3-404f-441a-9875-4af81aa3bd63___JR_HL 8570.JPG,256,256,3,RGB
+Potato___Early_blight,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Potato___Early_blight/f8b57e69-5902-4253-8404-11811ecf13e8___RS_Early.B 6995.JPG,256,256,3,RGB
+Potato___Late_blight,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Potato___Late_blight/5fe37f29-fe15-42ac-93b5-90aa5337bd55___RS_LB 2514.JPG,256,256,3,RGB
+Potato___healthy,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Potato___healthy/0b3e5032-8ae8-49ac-8157-a1cac3df01dd___RS_HL 1817.JPG,256,256,3,RGB
+Tomato_Bacterial_spot,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_Bacterial_spot/bcffc5ba-6602-455f-a84c-eb0ad85672bc___UF.GRC_BS_Lab Leaf 0373.JPG,256,256,3,RGB
+Tomato_Early_blight,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_Early_blight/b559ff8f-efd7-4897-8596-69447c2e6b89___RS_Erly.B 6409.JPG,256,256,3,RGB
+Tomato_Late_blight,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_Late_blight/1058d7d2-1b7d-40cc-ab26-95b2da23198b___RS_Late.B 4964.JPG,256,256,3,RGB
+Tomato_Leaf_Mold,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_Leaf_Mold/e7ebe82b-5573-47ff-acb8-f208462d0335___Crnl_L.Mold 7123.JPG,256,256,3,RGB
+Tomato_Septoria_leaf_spot,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_Septoria_leaf_spot/53f04b6f-afa0-44ca-906b-477462819a65___JR_Sept.L.S 8546.JPG,256,256,3,RGB
+Tomato_Spider_mites_Two_spotted_spider_mite,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_Spider_mites_Two_spotted_spider_mite/f1f40bbd-df07-4674-a604-03201e6096f7___Com.G_SpM_FL 8679.JPG,256,256,3,RGB
+Tomato__Target_Spot,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato__Target_Spot/725e8a79-eba4-480b-97b6-43c861ebc4c0___Com.G_TgS_FL 9665.JPG,256,256,3,RGB
+Tomato__Tomato_YellowLeaf__Curl_Virus,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato__Tomato_YellowLeaf__Curl_Virus/61956cbd-f717-4785-aa37-05f3a369c968___UF.GRC_YLCV_Lab 02394.JPG,256,256,3,RGB
+Tomato__Tomato_mosaic_virus,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato__Tomato_mosaic_virus/7d688270-b9e9-41fb-a22a-6af2f6285b46___PSU_CG 2091.JPG,256,256,3,RGB
+Tomato_healthy,/Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage/Tomato_healthy/0d932b2a-584e-4971-8590-70c5f0a049cf___RS_HL 9739.JPG,256,256,3,RGB
