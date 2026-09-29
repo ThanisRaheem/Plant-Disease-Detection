@@ -39,5 +39,21 @@ class counts, summaries, sample images, and a distribution plot under
 `results/resnet50/eda/`. Use `--integrity-limit N` only when a faster sampled
 integrity check is preferred.
 
+## Shared dataset split
+
+No permanent split is assumed until the group agrees on the shared classes and
+ratios. Create one manifest once, then give the same CSV to every model:
+
+```bash
+PYTHONPATH=src python -m resnet50.split \
+  --data-dir /path/to/PlantVillage \
+  --output /path/to/shared_split.csv --seed 42
+```
+
+The generator assigns each class to 70% train, 15% validation, and 15% test
+using a fixed seed, without copying image files. A manifest must contain
+`path,label,split`; the loader uses those assignments exactly and never
+reshuffles them. The test rows are only used by the evaluation command.
+
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.

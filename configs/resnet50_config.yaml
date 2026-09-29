@@ -2,7 +2,7 @@
 data_dir: /Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage
 manifest: null
 classes: null
-seed: 4050
+seed: 42
 image_size: [224, 224]
 batch_size: 32
 validation_split: 0.15
