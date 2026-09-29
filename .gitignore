@@ -1,3 +1,18 @@
+dataset/
+data/
+*.zip
+__pycache__/
+.venv/
+venv/
+.env
+.DS_Store
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.pth
+*.pt
+*.h5
+*.keras
+results/resnet50/*.keras
 # Dataset
 PlantVillage/
 PlantVillage.zip
