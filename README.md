@@ -1,20 +1,27 @@
 # Plant Disease Detection
 
 ## Overview
-This project uses deep learning techniques to detect plant diseases from leaf images.
+
+This project uses deep learning techniques to classify plant leaf images and detect diseases.
 
 ## Features
+
 - Image-based disease classification
-- Deep learning model implementation
-- Automated plant disease detection
+- VGG16 transfer learning and fine-tuning
+- A from-scratch Custom CNN implementation
+- Dataset exploration and preprocessing notebooks
 
 ## Technologies Used
+
 - Python
 - TensorFlow / Keras
 - OpenCV
-- CNN
+- NumPy, pandas, scikit-learn, and Matplotlib
 
 ## Installation
+
+Create the environment with Python 3.13 (on this Mac, use
+`/opt/anaconda3/bin/python` in place of `python3.13`):
 
 ```bash
 pip install -r requirements.txt
@@ -107,3 +114,24 @@ checkpoint size, and inference timing under `results/resnet50/evaluation/`.
 
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.
+python3.13 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+In VS Code, open `VGG16_Plant_Disease.ipynb`, click **Select Kernel**,
+choose **Python Environments**, and select `.venv/bin/python`.
+If it is not listed, run **Python: Select Interpreter** from the Command
+Palette and enter that interpreter path, then select it as the notebook kernel.
+Restart the notebook kernel before running the cells.
+
+Use the project environment instead of Anaconda's `base` environment. The
+original base environment crashed during `import tensorflow`; the macOS crash
+report showed a native Protobuf segmentation fault involving
+`libtensorflow_framework.2.dylib` and Anaconda's `libprotobuf.29.3.0.dylib`.
+
+## Notebooks
+
+The reproducible notebooks in `notebooks/` cover dataset EDA, stratified
+data preprocessing, and a from-scratch Custom CNN. Runtime artifacts are
+written below `results/custom_cnn/`; the source dataset and trained models are
+ignored by Git.
