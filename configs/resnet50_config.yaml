@@ -1,5 +1,5 @@
 # Set data_dir to the local dataset; use the shared CSV manifest when available.
-data_dir: /Users/thakkifilyas/Desktop/DL_Project/archive/PlantVillage/PlantVillage
+data_dir: /Users/thakkifilyas/Desktop/DL_Project/PlantVillage
 manifest: null
 classes: null
 seed: 42
