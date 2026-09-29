@@ -92,5 +92,18 @@ loss, accuracy, validation metrics, effective learning rate, and epoch duration.
 validation loss only. Checkpoints and generated model files are excluded by
 `.gitignore`.
 
+## Final evaluation
+
+Run evaluation once after model development:
+
+```bash
+PYTHONPATH=src python -m resnet50.evaluate --config configs/resnet50_config.yaml --checkpoint results/resnet50/best.keras
+```
+
+This makes one inference pass over the untouched test split and saves accuracy,
+precision, recall, F1, one-vs-rest ROC-AUC when defined, per-class metrics,
+classification report, confusion matrix, training curves, parameter counts,
+checkpoint size, and inference timing under `results/resnet50/evaluation/`.
+
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.
