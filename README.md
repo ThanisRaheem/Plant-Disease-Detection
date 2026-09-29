@@ -1,137 +1,444 @@
-# Plant Disease Detection
+# 🌿 Plant Disease Detection Using Deep Learning
 
-## Overview
+<p align="center">
+  <img src="https://img.shields.io/badge/Deep%20Learning-CNN-blue" />
+  <img src="https://img.shields.io/badge/Framework-TensorFlow-orange" />
+  <img src="https://img.shields.io/badge/Model-VGG16%20%7C%20ResNet50-green" />
+  <img src="https://img.shields.io/badge/Dataset-PlantVillage-success" />
+</p>
 
-This project uses deep learning techniques to classify plant leaf images and detect diseases.
+---
 
-## Features
+# 📌 Project Overview
 
-- Image-based disease classification
-- VGG16 transfer learning and fine-tuning
-- A from-scratch Custom CNN implementation
-- Dataset exploration and preprocessing notebooks
+Agriculture plays a vital role in global food production. However, plant diseases significantly reduce crop productivity and quality. Traditional disease identification methods require expert knowledge and manual inspection, which can be time-consuming and expensive.
 
-## Technologies Used
+This project develops an **Artificial Intelligence-based Plant Disease Detection System** using **Deep Learning and Transfer Learning techniques** to automatically identify plant diseases from leaf images.
 
-- Python
-- TensorFlow / Keras
-- OpenCV
-- NumPy, pandas, scikit-learn, and Matplotlib
+The system uses advanced Convolutional Neural Network (CNN) architectures to extract visual features from plant leaves and classify them into different disease categories.
 
-## Installation
+---
 
-Create the environment with Python 3.13 (on this Mac, use
-`/opt/anaconda3/bin/python` in place of `python3.13`):
+# 🎯 Project Objectives
+
+The main objectives of this component are:
+
+- Develop an automated plant disease classification system using Deep Learning.
+- Apply Transfer Learning techniques for efficient feature extraction.
+- Train CNN models using large-scale plant leaf image datasets.
+- Compare different deep learning architectures.
+- Evaluate model performance using standard evaluation metrics.
+- Support early detection of plant diseases.
+
+---
+
+# 🏗️ System Workflow
+
+```
+                 Plant Leaf Image
+                        |
+                        ↓
+              Image Preprocessing
+                        |
+                        ↓
+              Image Augmentation
+                        |
+                        ↓
+          Pre-trained CNN Architecture
+              (VGG16 / ResNet50)
+                        |
+                        ↓
+             Feature Extraction
+                        |
+                        ↓
+              Classification Layer
+                        |
+                        ↓
+             Disease Prediction
+                        |
+                        ↓
+          Predicted Disease Category
+```
+
+---
+
+# 🧠 Deep Learning Methodology
+
+## Transfer Learning
+
+Transfer Learning is used to improve model performance by using knowledge learned from previously trained neural networks.
+
+The pretrained models used in this project are:
+
+- VGG16
+- ResNet50
+
+
+These models are pretrained on the ImageNet dataset and adapted for plant disease classification.
+
+---
+
+# 🔬 Implemented Models
+
+## 1. VGG16
+
+VGG16 is a deep convolutional neural network consisting of 16 layers.
+
+### Advantages:
+
+- Simple architecture
+- Effective feature extraction
+- Suitable for image classification tasks
+
+
+---
+
+## 2. ResNet50
+
+ResNet50 is a residual neural network that introduces skip connections.
+
+### Advantages:
+
+- Solves vanishing gradient problems
+- Enables deeper network training
+- Provides powerful feature extraction capability
+
+
+---
+
+# 📂 Dataset Information
+
+## PlantVillage Dataset
+
+The project uses the publicly available PlantVillage dataset.
+
+Dataset contains:
+
+- Healthy plant images
+- Diseased plant images
+- Multiple crop categories
+
+
+Example classes:
+
+```
+Apple___Apple_scab
+
+Apple___Black_rot
+
+Apple___Healthy
+
+Potato___Early_blight
+
+Potato___Late_blight
+
+Tomato___Bacterial_spot
+
+Tomato___Late_blight
+```
+
+---
+
+# 🔄 Image Preprocessing Pipeline
+
+Before training, images are processed using the following steps:
+
+## 1. Image Resizing
+
+All images are resized into:
+
+```
+224 × 224 × 3
+```
+
+This matches the input requirement of pretrained CNN models.
+
+---
+
+## 2. Image Normalization
+
+Pixel values are normalized:
+
+```
+Normalized Pixel = Pixel Value / 255
+```
+
+This improves training stability.
+
+---
+
+## 3. Data Augmentation
+
+To increase dataset diversity and prevent overfitting:
+
+Applied techniques:
+
+- Rotation
+- Horizontal Flip
+- Zoom
+- Brightness Adjustment
+- Width Shift
+- Height Shift
+
+
+---
+
+# 📁 Project Structure
+
+```
+Plant-Disease-Detection/
+
+│
+├── dataset/
+│   └── PlantVillage Dataset
+│
+├── preprocessing/
+│   └── image_preprocessing.py
+│
+├── notebooks/
+│   │
+│   ├── VGG16_Training.ipynb
+│   └── ResNet50_Training.ipynb
+│
+├── models/
+│   ├── vgg16_model/
+│   └── resnet50_model/
+│
+├── results/
+│   │
+│   ├── accuracy_graphs/
+│   ├── confusion_matrix/
+│   └── evaluation_reports/
+│
+├── requirements.txt
+│
+└── README.md
+
+```
+
+---
+
+# 🛠️ Technologies Used
+
+## Programming Language
+
+```
+Python 3.x
+```
+
+## Deep Learning Framework
+
+```
+TensorFlow
+Keras
+```
+
+## Image Processing
+
+```
+OpenCV
+Pillow
+```
+
+## Data Handling
+
+```
+NumPy
+Pandas
+```
+
+## Visualization
+
+```
+Matplotlib
+Seaborn
+```
+
+---
+
+# ⚙️ Installation Guide
+
+## Step 1: Clone Repository
+
+```bash
+git clone https://github.com/ThanisRaheem/Plant-Disease-Detection.git
+```
+
+---
+
+## Step 2: Navigate to Project Folder
+
+```bash
+cd Plant-Disease-Detection
+```
+
+---
+
+## Step 3: Create Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+---
+
+## Step 4: Activate Virtual Environment
+
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+
+### Mac/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+## Step 5: Install Required Libraries
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## ResNet50 experiment
+---
 
-The implementation is under `src/resnet50`. Edit
-`configs/resnet50_config.yaml` to point `data_dir` at the local PlantVillage
-root. The dataset is not committed. A future shared CSV split can be supplied
-via `manifest` (columns `path,label`) and shared class names via `classes`.
+# 🚀 Model Training
 
-```bash
-MPLCONFIGDIR=/tmp/matplotlib PYTHONPATH=src python -m resnet50.eda --config configs/resnet50_config.yaml
-PYTHONPATH=src python -m resnet50.train --config configs/resnet50_config.yaml
-PYTHONPATH=src python -m resnet50.evaluate --config configs/resnet50_config.yaml --checkpoint results/resnet50/best.keras
-```
+## VGG16 Training
 
-The EDA command scans the class folders without modifying images, checks every
-image for corruption, prints representative dimensions/channels, and saves
-class counts, summaries, sample images, and a distribution plot under
-`results/resnet50/eda/`. Use `--integrity-limit N` only when a faster sampled
-integrity check is preferred.
-
-## Shared dataset split
-
-No permanent split is assumed until the group agrees on the shared classes and
-ratios. Create one manifest once, then give the same CSV to every model:
+Run:
 
 ```bash
-PYTHONPATH=src python -m resnet50.split \
-  --data-dir /path/to/PlantVillage \
-  --output /path/to/shared_split.csv --seed 42
+python train_vgg16.py
 ```
 
-The generator assigns each class to 70% train, 15% validation, and 15% test
-using a fixed seed, without copying image files. A manifest must contain
-`path,label,split`; the loader uses those assignments exactly and never
-reshuffles them. The test rows are only used by the evaluation command.
 
-## ResNet50 preprocessing
+## ResNet50 Training
 
-Images are resized to **224×224 RGB**. The model applies Keras
-`ResNet50.preprocess_input`, which converts RGB pixels to the channel convention
-and ImageNet training scale expected by the pretrained backbone. During
-training only, the configured augmentation pipeline applies a horizontal flip,
-small rotation (±9°), modest zoom (10%), small translation (5%), and conservative
-contrast variation (10%). These transformations are applied before ImageNet
-normalization. Validation and test data use only resize and RGB conversion;
-they contain no random augmentation, so model selection and final evaluation
-remain deterministic and comparable across architectures.
-
-## ResNet50 transfer learning stages
-
-The classifier head is created with one softmax output per selected class; no
-class count is hardcoded. Training has two stages:
-
-1. **Feature extraction:** ImageNet-pretrained ResNet50 layers are frozen and
-   only the new global-average-pooling/dropout/softmax head is optimized.
-2. **Fine-tuning:** the later `conv5_block1` and subsequent ResNet50 layers are
-   unfrozen while earlier blocks remain frozen. This adapts high-level visual
-   features to plant disease while preserving general ImageNet features. The
-   second stage uses the smaller `fine_tune_learning_rate` from the config.
-
-Both stages select checkpoints using validation data only. The test set remains
-reserved for the separate final evaluation command. The implementation uses
- sparse categorical cross-entropy, equivalent to multiclass cross-entropy for
-integer class labels.
-
-Training prints the selected device (CPU or GPU; CUDA/Metal depends on the
-installed TensorFlow build), saves the best validation checkpoint to
-`results/resnet50/best.keras`, and writes `training_metrics.csv` with epoch,
-loss, accuracy, validation metrics, effective learning rate, and epoch duration.
-`ReduceLROnPlateau` monitors validation loss, and early stopping also monitors
-validation loss only. Checkpoints and generated model files are excluded by
-`.gitignore`.
-
-## Final evaluation
-
-Run evaluation once after model development:
+Run:
 
 ```bash
-PYTHONPATH=src python -m resnet50.evaluate --config configs/resnet50_config.yaml --checkpoint results/resnet50/best.keras
+python train_resnet50.py
 ```
 
-This makes one inference pass over the untouched test split and saves accuracy,
-precision, recall, F1, one-vs-rest ROC-AUC when defined, per-class metrics,
-classification report, confusion matrix, training curves, parameter counts,
-checkpoint size, and inference timing under `results/resnet50/evaluation/`.
+---
 
-Splits use fixed seed `4050`; validation drives early stopping and model
-selection, while the held-out test split is reserved for final evaluation.
-python3.13 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+# 📊 Model Evaluation
+
+The trained models are evaluated using:
+
+## Accuracy
+
+Measures the overall prediction correctness.
+
+---
+
+## Precision
+
+Measures correctly identified disease samples.
+
+---
+
+## Recall
+
+Measures the ability to detect disease cases.
+
+---
+
+## F1 Score
+
+Balances precision and recall.
+
+---
+
+## Confusion Matrix
+
+Provides class-level prediction analysis.
+
+---
+
+# 📈 Model Output
+
+The system provides:
+
+✅ Predicted disease class  
+✅ Confidence score  
+✅ Training accuracy graph  
+✅ Validation accuracy graph  
+✅ Confusion matrix  
+✅ Classification report  
+
+
+Example:
+
+```
+Input:
+Tomato Leaf Image
+
+
+Prediction:
+Tomato___Late_blight
+
+
+Confidence:
+95.6%
+
 ```
 
-In VS Code, open `VGG16_Plant_Disease.ipynb`, click **Select Kernel**,
-choose **Python Environments**, and select `.venv/bin/python`.
-If it is not listed, run **Python: Select Interpreter** from the Command
-Palette and enter that interpreter path, then select it as the notebook kernel.
-Restart the notebook kernel before running the cells.
+---
 
-Use the project environment instead of Anaconda's `base` environment. The
-original base environment crashed during `import tensorflow`; the macOS crash
-report showed a native Protobuf segmentation fault involving
-`libtensorflow_framework.2.dylib` and Anaconda's `libprotobuf.29.3.0.dylib`.
+# 👥 Team Contribution
 
-## Notebooks
+## Component Name
 
-The reproducible notebooks in `notebooks/` cover dataset EDA, stratified
-data preprocessing, and a from-scratch Custom CNN. Runtime artifacts are
-written below `results/custom_cnn/`; the source dataset and trained models are
-ignored by Git.
+**Plant Disease Detection Using Deep Learning**
+
+
+## Responsibilities
+
+- Dataset preparation
+- Image preprocessing
+- Data augmentation
+- Deep learning model development
+- Transfer learning implementation
+- Model evaluation
+- Performance analysis
+
+
+---
+
+# 🔮 Future Enhancements
+
+Future improvements include:
+
+- Real-time plant disease detection using mobile applications.
+- Explainable AI integration using Grad-CAM.
+- Disease severity estimation.
+- Farmer recommendation system.
+- Cloud-based AI deployment.
+- IoT-based smart agriculture integration.
+
+
+---
+
+# 📜 Research Contribution
+
+This component contributes towards developing an intelligent agricultural support system by applying Deep Learning methods for automatic plant disease recognition.
+
+---
+
+# 🙏 Acknowledgement
+
+We would like to thank our supervisors, lecturers, and team members for their continuous guidance and support throughout this research project.
+
+---
+
+# 📄 License
+
+This project is developed for academic and research purposes.
