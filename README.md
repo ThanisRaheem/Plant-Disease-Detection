@@ -84,5 +84,13 @@ reserved for the separate final evaluation command. The implementation uses
  sparse categorical cross-entropy, equivalent to multiclass cross-entropy for
 integer class labels.
 
+Training prints the selected device (CPU or GPU; CUDA/Metal depends on the
+installed TensorFlow build), saves the best validation checkpoint to
+`results/resnet50/best.keras`, and writes `training_metrics.csv` with epoch,
+loss, accuracy, validation metrics, effective learning rate, and epoch duration.
+`ReduceLROnPlateau` monitors validation loss, and early stopping also monitors
+validation loss only. Checkpoints and generated model files are excluded by
+`.gitignore`.
+
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.
