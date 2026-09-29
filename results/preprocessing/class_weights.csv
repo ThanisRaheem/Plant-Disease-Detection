@@ -1,0 +1,16 @@
+class_name,class_index,weight
+Pepper__bell___Bacterial_spot,0,1.0522522522522522
+Pepper__bell___healthy,1,5.12280701754386
+Potato___Early_blight,2,0.988155668358714
+Potato___Late_blight,3,0.8319088319088319
+Potato___healthy,4,1.8193146417445483
+Tomato_Bacterial_spot,5,0.9449838187702265
+Tomato_Early_blight,6,0.7633986928104575
+Tomato_Late_blight,7,0.8283687943262411
+Tomato_Leaf_Mold,8,1.0354609929078014
+Tomato_Septoria_leaf_spot,9,0.8145048814504882
+Tomato_Spider_mites_Two_spotted_spider_mite,10,1.2891832229580573
+Tomato__Target_Spot,11,1.1317829457364341
+Tomato__Tomato_YellowLeaf__Curl_Virus,12,0.6927639383155397
+Tomato__Tomato_mosaic_virus,13,0.8929663608562691
+Tomato_healthy,14,0.9096573208722741
