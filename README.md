@@ -28,9 +28,16 @@ root. The dataset is not committed. A future shared CSV split can be supplied
 via `manifest` (columns `path,label`) and shared class names via `classes`.
 
 ```bash
+MPLCONFIGDIR=/tmp/matplotlib PYTHONPATH=src python -m resnet50.eda --config configs/resnet50_config.yaml
 PYTHONPATH=src python -m resnet50.train --config configs/resnet50_config.yaml
 PYTHONPATH=src python -m resnet50.evaluate --config configs/resnet50_config.yaml --checkpoint results/resnet50/best.keras
 ```
+
+The EDA command scans the class folders without modifying images, checks every
+image for corruption, prints representative dimensions/channels, and saves
+class counts, summaries, sample images, and a distribution plot under
+`results/resnet50/eda/`. Use `--integrity-limit N` only when a faster sampled
+integrity check is preferred.
 
 Splits use fixed seed `4050`; validation drives early stopping and model
 selection, while the held-out test split is reserved for final evaluation.
