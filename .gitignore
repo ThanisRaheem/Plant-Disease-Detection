@@ -4,7 +4,6 @@ data/
 __pycache__/
 .venv/
 venv/
-.env
 .DS_Store
 .ipynb_checkpoints/
 *.ipynb_checkpoints
@@ -33,3 +32,5 @@ models/
 *.h5
 *.keras
 .DS_Store
+config.bat
+node_modules
