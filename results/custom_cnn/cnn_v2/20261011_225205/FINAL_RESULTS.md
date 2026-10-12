@@ -1,0 +1,23 @@
+# Custom CNN Final Results
+
+- Classes: 15
+- Training images: 2920
+- Validation images: 626
+- Test images: 626
+- Epochs completed: 20
+- Selected epoch (minimum validation loss): 18
+- Best validation loss: 0.722913
+- Validation accuracy at selected epoch: 0.779553
+- Peak validation accuracy: 0.779553
+- Test accuracy: 0.753994
+- Macro precision: 0.756774
+- Macro recall: 0.772921
+- Macro F1: 0.746891
+- Weighted precision: 0.772099
+- Weighted recall: 0.753994
+- Weighted F1: 0.742855
+- Total parameters: 869487
+- Trainable parameters: 867823
+- Non-trainable parameters: 1664
+- Training time: 171.88 minutes
+- Checkpoint: D:\Plant-Disease-Detection\models\custom_cnn_v2\20261011_225205\custom_cnn_v2_best.keras

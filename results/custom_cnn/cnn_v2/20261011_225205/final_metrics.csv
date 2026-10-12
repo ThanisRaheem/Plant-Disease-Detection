@@ -1,0 +1,2 @@
+model,test_accuracy,test_loss,macro_precision,macro_recall,macro_f1,weighted_precision,weighted_recall,weighted_f1,validation_accuracy_at_selected_epoch,best_validation_loss,selected_epoch
+Custom CNN v2,0.7539936102236422,0.7221753001213074,0.7567740895642271,0.7729207000482798,0.746890975089675,0.7720992868542514,0.7539936102236422,0.7428550551608749,0.779552698135376,0.7229128479957581,18
